@@ -1,0 +1,427 @@
+@startuml
+class com.example.e_commerce.MainActivity {
+- Button joinNowButton
+- ProgressBar progressBar
+- TextView sellerBegin
+# void onCreate(Bundle)
+# void onStart()
+- void allowAccess(String,String)
++ void loadUI(boolean)
+}
+class com.example.e_commerce.viewHolder.CartViewHolder {
++ TextView txtProductName
++ ItemClickListener mItemClickListener
++ void setItemClickListener(ItemClickListener)
++ void onClick(View)
+}
+class com.example.e_commerce.byers.ConfirmFinalOrderActivity {
+- EditText nameEditText
+- Button confirmOrderBtn
+- String totalAmount
+- String type
+- HashMap<String,Object> orderPID
+- DatabaseReference orderRef
+# void onCreate(Bundle)
+- void getOrderDetails()
+- void check()
+- void updateOrderInfo()
+- void confirmOrder()
+}
+class com.example.e_commerce.byers.WishListActivity {
+- DatabaseReference wishListRef
+- DatabaseReference cartListRef
+- RecyclerView recyclerView
+- List<Products> productsList
+- ProductsAdapter productsAdapter
+# void onCreate(Bundle)
++ void onClick(View,int,boolean)
+- void addingToCart(String,String,String)
++ void onFavBtnClick(View,int,boolean)
+- void removeFromWishList(String)
+}
+class com.example.e_commerce.byers.HomeActivity {
+- DatabaseReference productRef
+- DatabaseReference cartListRef
+- DatabaseReference wishListRef
+- AppBarConfiguration mAppBarConfiguration
+- DrawerLayout drawer
+- StaggeredGridLayoutManager staggeredGrid
+- RecyclerView recyclerView
+- SliderView sliderView
+- String type
+- List<Products> productsList
+- ProductsAdapter productsAdapter
+- List<String> sliderImagesList
+# void onCreate(Bundle)
++ boolean onCreateOptionsMenu(Menu)
++ boolean onNavigationItemSelected(MenuItem)
++ void onBackPressed()
++ void onClick(View,int,boolean)
++ void onFavBtnClick(View,int,boolean)
+- void removeFromWishList(String)
+- void addingToWishList(Products)
+- void addingToCart(String,String,String)
+}
+class com.example.e_commerce.byers.ProductDetailsActivity {
+- Button addToCart
+- ImageView productImage
+- ElegantNumberButton numberButton
+- TextView productPrice
+- String productID
+- String orderID
+# void onCreate(Bundle)
+- void editOrderQytAndTotal()
+- void addingToCart()
+- void getProductDetails(String)
+# void onStart()
+}
+class com.example.e_commerce.sellers.SellerLoginActivity {
+- EditText emailInput
+- Button loginBtn
+- ProgressBar progressBar
+- {static} String TAG
+- FirebaseAuth mAuth
+# void onCreate(Bundle)
+- void loginSeller()
++ void loadUI(boolean)
+}
+class com.example.e_commerce.model.Users {
+- String name
+- String password
+- String phone
+- String image
+- String address
++ String getImage()
++ void setImage(String)
++ String getAddress()
++ void setAddress(String)
++ String getName()
++ void setName(String)
++ String getPassword()
++ void setPassword(String)
++ String getPhone()
++ void setPhone(String)
++ String toString()
+}
+class com.example.e_commerce.viewHolder.ProductViewHolder {
++ TextView txtProductName
++ Button addToCart
++ ImageView imageView
++ ItemClickListener mItemClickListener
++ ImageButton editQyt
++ CheckBox favoriteButton
+- int mItemPosition
++ void setItemClickListener(ItemClickListener)
++ void onClick(View)
+}
+class com.example.e_commerce.model.Cart {
+- String pid
++ String getPid()
++ void setPid(String)
++ String getPname()
++ void setPname(String)
++ String getPrice()
++ void setPrice(String)
++ String getQuantity()
++ void setQuantity(String)
++ String getDiscount()
++ void setDiscount(String)
+}
+class com.example.e_commerce.prevalent.Prevalent {
++ {static} Users CURRENT_ONLINE_USER
++ {static} String USER_PHONE_KEY
++ {static} String USER_PASSWORD_kEY
++ {static} String PARENT_DP_NAME_USERS
++ {static} String CATEGORY
+}
+class com.example.e_commerce.sellers.SellerProductCategoryActivity {
+- ImageView tShirts
+- ImageView glasses
+- ImageView headPhonesHandFree
+# void onCreate(Bundle)
++ void onClick(View)
+}
+class com.example.e_commerce.model.AdminOrders {
+- String rName
++ String getOrderID()
++ void setOrderID(String)
++ String getrName()
++ void setrName(String)
++ String getrPhone()
++ void setrPhone(String)
++ String getAddress()
++ void setAddress(String)
++ String getCity()
++ void setCity(String)
++ String getState()
++ void setState(String)
++ String getDate()
++ void setDate(String)
++ String getTime()
++ void setTime(String)
++ String getTotalAmount()
++ void setTotalAmount(String)
++ String getuPhone()
++ void setuPhone(String)
++ String getuName()
++ void setuName(String)
+}
+class com.example.e_commerce.NewOrdersActivity {
+- RecyclerView ordersListRecycler
+- DatabaseReference ordersRef
+- List<AdminOrders> adminOrdersList
+- AdminOrdersAdapter adminOrdersAdapter
+- String type
+# void onCreate(Bundle)
++ void onBtnClick(View,int)
+}
+class com.example.e_commerce.byers.RegisterActivity {
+- Button createAccountButton
+- EditText inputName
+- ProgressBar progressBar
+- {static} String TAG
+# void onCreate(Bundle)
+- void createAccount()
+- void validatePhoneNumber(String,String,String)
++ void loadUi(boolean)
+}
+class com.example.e_commerce.byers.LoginActivity {
+- EditText inputPhoneNumber
+- Button loginButton
+- ProgressBar progressBar
+- CheckBox chkBoxRememberMe
+- TextView adminLink
+- String parentDpName
+- {static} String TAG
+# void onCreate(Bundle)
+- void loginUser()
+- void allowAccessToAccount(String,String)
++ void loadUI(boolean)
+}
+class com.example.e_commerce.byers.CartActivity {
+- RecyclerView recyclerView
+- RecyclerView.LayoutManager layoutManager
+- Button nextProcessBtn
+- TextView txtTotalAmount
+- int overTotalPrice
+- HashMap<String,Object> orderPIDMap
+# void onCreate(Bundle)
+# void onStart()
+}
+class com.example.e_commerce.sellers.SellerHomeActivity {
+- RecyclerView selNewProductsRecycler
+- RecyclerView.LayoutManager layoutManager
+- DatabaseReference productRef
+- FirebaseAuth mAuth
+- List<Products> productsList
+- ProductsAdapter productsAdapter
+# void onCreate(Bundle)
++ boolean onNavigationItemSelected(MenuItem)
++ void onClick(View,int,boolean)
++ void onFavBtnClick(View,int,boolean)
+}
+class com.example.e_commerce.byers.ResetPasswordActivity {
+- String check
+- TextView pageTitle
+- EditText phoneNumber
+- Button verifyButton
+# void onCreate(Bundle)
+# void onStart()
+- void forgotPassword()
+- void setAnswers()
+- void displayPreviousAnswers()
+}
+class com.example.e_commerce.AddEditProductsActivity {
+- Button addNewProductButton
+- ImageView inputProductImage
+- EditText inputProductName
+- ProgressDialog loadingBar
+- String categoryName
+- {static} int GALLEY_PICK
+- Uri imageUri
+- String productRandomKey
+- StorageReference productImageRef
+- DatabaseReference productRef
+- String selName
+# void onCreate(Bundle)
+- void validateProductData()
+- void storeProductInformation(String)
+- void saveProductInfoTodataBase()
++ void getSellerInfo()
+- void openGallery()
+# void onActivityResult(int,int,Intent)
+- void deleteThisProduct()
+- void applyChanges()
+- void displaySpecificProductInfo()
+}
+class com.example.e_commerce.SliderAdapter {
+- Context context
+- List<String> mSliderItems
++ void renewItems(List<String>)
++ void deleteItem(int)
++ void addItem(String)
++ SliderAdapterVH onCreateViewHolder(ViewGroup)
++ void onBindViewHolder(SliderAdapterVH,int)
++ int getCount()
+}
+class com.example.e_commerce.SliderAdapter.SliderAdapterVH {
+~ View itemView
+~ ImageView imageViewBackground
+~ ImageView imageGifContainer
+~ TextView textViewDescription
+}
+class com.example.e_commerce.admin.OrderProductsActivity {
+- {static} String TAG
+- DatabaseReference ordersRef
+- DatabaseReference productsRef
+- RecyclerView productsListRecycler
+- RecyclerView.LayoutManager layoutManager
+- String userID
+- String orderID
+- String type
+- List<Products> productsList
+- ProductsAdapter productsAdapter
+- HashMap<String,Object> qytMap
+# void onCreate(Bundle)
++ void onClick(View,int,boolean)
++ void onFavBtnClick(View,int,boolean)
+}
+interface com.example.e_commerce.interface_listners.ItemClickListener {
+~ void onClick(View,int,boolean)
+~ void onFavBtnClick(View,int,boolean)
+}
+class com.example.e_commerce.sellers.SellerRegistrationActivity {
+- TextView alreadySeller
+- EditText nameInput
+- Button registerBtn
+- ProgressBar progressBar
+- FirebaseAuth mAuth
+# void onCreate(Bundle)
+- void registerSeller()
++ void loadUI(boolean)
+}
+class com.example.e_commerce.AdminOrdersAdapter {
+- List<AdminOrders> adminOrdersList
+- OnOrderClick mOnOrderClick
+- int mPosition
+- String type
++ void setType(String)
++ void setAdminOrdersList(List<AdminOrders>)
++ AdminOrders getOrderObject()
++ OrdersViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(OrdersViewHolder,int)
++ int getItemCount()
+}
+class com.example.e_commerce.AdminOrdersAdapter.OrdersViewHolder {
+~ TextView userName
+~ Button showOrdersBtn
+~ OnOrderClick mOnOrderClick
++ void onClick(View)
+}
+interface com.example.e_commerce.AdminOrdersAdapter.OnOrderClick {
+~ void onBtnClick(View,int)
+}
+class com.example.e_commerce.byers.SettingsActivity {
+- CircleImageView profileImageView
+- EditText fullNameEditText
+- TextView closeTextBtn
+- Button securityQuestionBtn
+- Uri imageUri
+- String myUrl
+- StorageTask uploadTask
+- StorageReference storageProfilePictureRef
+- DatabaseReference ref
+# void onCreate(Bundle)
+# void onActivityResult(int,int,Intent)
+- void updateOnlyUserInfo()
+- void userInfoSaved()
+- void uploadImage()
+- void userInfoDisplay(CircleImageView,EditText,EditText,EditText)
+}
+class com.example.e_commerce.admin.CheckNewProductsActivity {
+- RecyclerView selNewProductsRecycler
+- RecyclerView.LayoutManager layoutManager
+- DatabaseReference unApprovedProductsRef
+# void onCreate(Bundle)
+# void onStart()
+- void changeProductState(String,String)
+}
+class com.example.e_commerce.ProductsAdapter {
+- List<Products> productsList
+- List<Products> productsListFull
+- ItemClickListener mItemClickListener
+- int mItemPosition
+- String type
+- HashMap<String,Object> pQytMap
+- Filter filter
++ void setpQytMap(HashMap<String,Object>)
++ void setType(String)
++ void setProductsList(List<Products>)
++ ProductViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ProductViewHolder,int)
++ int getItemCount()
++ Filter getFilter()
+}
+class com.example.e_commerce.model.Products {
+- String pname
++ String getProductState()
++ void setProductState(String)
++ String getPname()
++ void setPname(String)
++ String getDescription()
++ void setDescription(String)
++ String getPrice()
++ void setPrice(String)
++ String getImage()
++ void setImage(String)
++ String getCategory()
++ void setCategory(String)
++ String getPid()
++ void setPid(String)
++ String getDate()
++ void setDate(String)
++ String getTime()
++ void setTime(String)
+}
+
+
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.MainActivity
+com.example.e_commerce.viewHolder.OnClickListener <|.. com.example.e_commerce.viewHolder.CartViewHolder
+com.example.e_commerce.viewHolder.ViewHolder <|-- com.example.e_commerce.viewHolder.CartViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.ConfirmFinalOrderActivity
+com.example.e_commerce.interface_listners.ItemClickListener <|.. com.example.e_commerce.byers.WishListActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.WishListActivity
+com.example.e_commerce.byers.OnNavigationItemSelectedListener <|.. com.example.e_commerce.byers.HomeActivity
+com.example.e_commerce.interface_listners.ItemClickListener <|.. com.example.e_commerce.byers.HomeActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.HomeActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.ProductDetailsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.sellers.SellerLoginActivity
+com.example.e_commerce.viewHolder.OnClickListener <|.. com.example.e_commerce.viewHolder.ProductViewHolder
+com.example.e_commerce.viewHolder.ViewHolder <|-- com.example.e_commerce.viewHolder.ProductViewHolder
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.sellers.SellerProductCategoryActivity
+com.example.e_commerce.OnOrderClick <|.. com.example.e_commerce.NewOrdersActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.NewOrdersActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.RegisterActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.LoginActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.CartActivity
+com.example.e_commerce.sellers.OnNavigationItemSelectedListener <|.. com.example.e_commerce.sellers.SellerHomeActivity
+com.example.e_commerce.interface_listners.ItemClickListener <|.. com.example.e_commerce.sellers.SellerHomeActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.sellers.SellerHomeActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.ResetPasswordActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.AddEditProductsActivity
+com.smarteist.autoimageslider.SliderViewAdapter <|-- com.example.e_commerce.SliderAdapter
+com.example.e_commerce.SliderAdapter +.. com.example.e_commerce.SliderAdapter.SliderAdapterVH
+com.example.e_commerce.ViewHolder <|-- com.example.e_commerce.SliderAdapter.SliderAdapterVH
+com.example.e_commerce.interface_listners.ItemClickListener <|.. com.example.e_commerce.admin.OrderProductsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.admin.OrderProductsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.sellers.SellerRegistrationActivity
+com.example.e_commerce.Adapter <|-- com.example.e_commerce.AdminOrdersAdapter
+com.example.e_commerce.AdminOrdersAdapter +.. com.example.e_commerce.AdminOrdersAdapter.OrdersViewHolder
+com.example.e_commerce.OnClickListener <|.. com.example.e_commerce.AdminOrdersAdapter.OrdersViewHolder
+com.example.e_commerce.ViewHolder <|-- com.example.e_commerce.AdminOrdersAdapter.OrdersViewHolder
+com.example.e_commerce.AdminOrdersAdapter +.. com.example.e_commerce.AdminOrdersAdapter.OnOrderClick
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.byers.SettingsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.e_commerce.admin.CheckNewProductsActivity
+android.widget.Filterable <|.. com.example.e_commerce.ProductsAdapter
+com.example.e_commerce.Adapter <|-- com.example.e_commerce.ProductsAdapter
+@enduml
