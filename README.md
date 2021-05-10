@@ -23,12 +23,12 @@ P.S: І якщо ти з України і хочеш використати ц�
 <img src="https://i.imgur.com/D4s0Zjh.png" width="150" hight="20">
 <hr>
 
-# Seller
+# Seller (seller@gmail.com pass: qqqqqq)
 <img src="https://i.imgur.com/Jj4pwVt.png" width="150" hight="20">,
 <img src="https://i.imgur.com/73GvnLV.png" width="150" hight="20">
 <hr>
 
-# Admin
+# Admin (7777 pass: qqqqqqq)
 <img src="https://i.imgur.com/koQ2Cs4.png" width="150" hight="20">,
 <img src="https://i.imgur.com/U3kjjkU.png" width="150" hight="20">
 
